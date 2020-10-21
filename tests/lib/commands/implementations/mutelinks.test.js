@@ -1,14 +1,14 @@
-const { mutelinks } = require('../../../../lib/commands/implementations/mutelinks');
-const CommandOutput = require('../../../../lib/commands/command-output');
 const assert = require('assert');
 const sinon = require('sinon');
+const { mutelinks } = require('../../../../lib/commands/implementations/mutelinks');
+const CommandOutput = require('../../../../lib/commands/command-output');
 const Command = require('../../../../lib/commands/command-interface');
 const MessageRelay = require('../../../../lib/services/message-relay');
 const messageMatching = require('../../../../lib/services/message-matching');
 const { makeMute } = require('../../../../lib/chat-utils/punishment-helpers');
 
-describe('Mutelinks Test', () => {
-  beforeEach(function() {
+describe('Mutelinks Test', function () {
+  beforeEach(function () {
     this.mockServices = {
       messageRelay: new MessageRelay(),
       messageMatching,
@@ -18,9 +18,9 @@ describe('Mutelinks Test', () => {
     };
   });
 
-  it('mutes link messages when "all" with default time, then turned off', function() {
-    const messageRelay = this.mockServices.messageRelay;
-    const punishmentStream = this.mockServices.punishmentStream;
+  it('mutes link messages when "all" with default time, then turned off', function () {
+    const { messageRelay } = this.mockServices;
+    const { punishmentStream } = this.mockServices;
 
     const output1 = mutelinks.work('all', this.mockServices);
     assert.deepStrictEqual(
@@ -59,9 +59,9 @@ describe('Mutelinks Test', () => {
     );
   });
 
-  it('mutes link messages when "on" with custom time, then turned off', function() {
-    const messageRelay = this.mockServices.messageRelay;
-    const punishmentStream = this.mockServices.punishmentStream;
+  it('mutes link messages when "on" with custom time, then turned off', function () {
+    const { messageRelay } = this.mockServices;
+    const { punishmentStream } = this.mockServices;
 
     const output1 = mutelinks.work('on 20m', this.mockServices, { user: 'deStInY' });
     assert.deepStrictEqual(
@@ -128,9 +128,9 @@ describe('Mutelinks Test', () => {
       makeMute('test8', 1200, 'test8 muted for 20m for posting a link while link muting is on.'),
     );
   });
-  it('message formats correctly and alerts of duplicate commands', function() {
-    const messageRelay = this.mockServices.messageRelay;
-    const punishmentStream = this.mockServices.punishmentStream;
+  it('message formats correctly and alerts of duplicate commands', function () {
+    const { messageRelay } = this.mockServices;
+    const { punishmentStream } = this.mockServices;
 
     const output1 = mutelinks.work('on', this.mockServices, { user: 'deStInY' });
     assert.deepStrictEqual(

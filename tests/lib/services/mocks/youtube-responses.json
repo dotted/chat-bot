@@ -1,5 +1,5 @@
 {
- "getChannelsUploadedPlaylistId": {
+  "getChannelsUploadedPlaylistId": {
     "kind": "youtube#channelListResponse",
     "etag": "\"XI7nbFXulYBIpL0ayR_gDh3eu1k/Q4EBb0pKv0kjPKAhlunmv6Hg6Oc\"",
     "pageInfo": {
